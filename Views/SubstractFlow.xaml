@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="Material.Views.SubstractFlow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Material.Views" xmlns:viewmodels="clr-namespace:Material.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:SubstractFlowViewModel}"
+             mc:Ignorable="d" 
+             Height="300" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+
+        </Grid.RowDefinitions>
+        <StackPanel  Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="物资名称：" FontSize="15" Width="100" VerticalAlignment="Center"></TextBlock>
+            <ComboBox Width="150" ItemsSource="{Binding Tables}" DisplayMemberPath="Name" SelectedValue="0" Text="{Binding Flow.MaterialName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+
+            </ComboBox>
+        </StackPanel>
+        <StackPanel  Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="库存" FontSize="15" Width="100" VerticalAlignment="Center"></TextBlock>
+            <TextBox IsReadOnly="True" FontSize="20" Text="{Binding Sum,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  Width="150" VerticalAlignment="Center"></TextBox>
+        </StackPanel>
+        <StackPanel  Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="数量：" FontSize="15" Width="100" VerticalAlignment="Center"></TextBlock>
+
+            <TextBox FontSize="20" Text="{Binding  Flow.Number,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  Width="150" VerticalAlignment="Center"></TextBox>
+        </StackPanel>
+        <StackPanel  Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="说明：" FontSize="15" Width="100" VerticalAlignment="Center"></TextBlock>
+            <TextBox FontSize="20" Text="{Binding Flow.Tag}"  Width="150" VerticalAlignment="Center"></TextBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button Content="确定" Width="80" FontSize="15" Command="{Binding ComfirmCommand}"/>
+            <Button Content="取消" Width="80" FontSize="15" Command="{Binding CancelCommand }" />
+        </StackPanel>
+    </Grid>
+</UserControl>
